@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage Shows
+{% endblock %}
+
+{% block content %}
+
+<div class="manage-shows">
+
+    <div class="page-header1">
+
+        <div>
+            <h1>🎭 Manage Shows</h1>
+        </div>
+
+        <a href="{% url 'add_show' %}" class="add-btn2">
+            + Add Show
+        </a>
+
+    </div>
+
+    <div class="table-card2">
+
+        <table class="show-table">
+
+            <thead>
+
+                <tr>
+                    <th>Movie ID</th>
+                    <th>Theater ID</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Ticket Price</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for show in shows %}
+
+                <tr>
+
+                    <td>{{ show.movie_id }}</td>
+
+                    <td>{{ show.theater_id }}</td>
+
+                    <td>{{ show.show_date }}</td>
+
+                    <td>{{ show.show_time }}</td>
+
+                    <td>₹ {{ show.price }}</td>
+
+                    <td>
+
+                        <a href="{% url 'edit_show' show.id %}" class="edit-btn2">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'delete_show' show.id %}"
+                           class="delete-btn2"
+                           onclick="return confirm('Delete this show?')">
+
+                            Delete
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="6" class="empty-table">
+                        No Shows Available
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

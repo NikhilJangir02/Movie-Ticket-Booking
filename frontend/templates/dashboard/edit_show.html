@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Show
+{% endblock %}
+
+{% block content %}
+
+<h1>Edit Show</h1>
+
+{% if error %}
+<p style="color:red">
+    {{ error }}
+</p>
+{% endif %}
+
+<form method="post" class="booking-form">
+
+    {% csrf_token %}
+
+    <label>Movie</label>
+
+    <select name="movie_id" required>
+        {% for movie in movies %}
+
+        <option value="{{ movie.id }}" {% if movie.id == show.movie_id %}selected{% endif %}>
+            {{ movie.title }}
+        </option>
+
+        {% endfor %}
+    </select>
+
+    <br><br>
+
+    <label>Theater</label>
+
+    <select name="theater_id" required>
+        {% for theater in theaters %}
+
+        <option value="{{ theater.id }}" {% if theater.id == show.theater_id %}selected{% endif %}>
+            {{ theater.name }}
+        </option>
+
+        {% endfor %}
+
+    </select>
+
+    <br><br>
+
+    <label>Show Date</label>
+    <input type="date" name="show_date" value="{{ show.show_date }}" required>
+
+    <br><br>
+
+    <label>Show Time</label>
+    <input type="time" name="show_time" value="{{ show.show_time }}" required>
+
+    <label>Ticket Price</label>
+    <input type="number" name="price" step="0.01" value="{{ show.price }}" required>
+
+    <br><br>
+
+    <button type="submit">
+        Update Show
+    </button>
+
+    <a href="{% url 'manage_shows' %}" class="btn">
+        Cancel
+    </a>
+    
+</form>
+
+{% endblock  %}

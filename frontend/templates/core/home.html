@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body_class %}
+no-scroll
+{% endblock %}
+
+{% block content %}
+
+<section class="home-welcome">
+
+    <div class="home-welcome-content">
+
+        <span class="home-eyebrow">
+            🎬 MOVIE BOOKING SYSTEM
+        </span>
+
+        <h1>
+            Welcome to
+            <span>Movie Booking System</span>
+        </h1>
+
+        <p>
+            Book your favourite movies online.
+            Discover exciting movies, choose your theatre,
+            and enjoy a seamless movie experience.
+        </p>
+
+        <div class="home-actions">
+
+            <a href="/movies/" class="home-movie-btn">
+                🎟 Explore Movies
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}

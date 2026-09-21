@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage Theaters
+{% endblock %}
+
+{% block content %}
+
+<div class="page-header-theater">
+
+    <h1>🏢 Manage Theaters</h1>
+
+    <a href="{% url 'add_theater' %}" class="add-theater-btn">
+        + Add Theater
+    </a>
+
+</div>
+
+<div class="theater-table-card">
+
+    <table class="theater-table5">
+
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>City</th>
+                <th>Address</th>
+                <th>Total Seats</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+
+            {% for theater in theaters %}
+
+            <tr>
+
+                <td>{{ theater.name }}</td>
+                <td>{{ theater.city }}</td>
+                <td>{{ theater.address }}</td>
+                <td>{{ theater.total_seats }}</td>
+
+                <td>
+
+                    <a href="{% url 'edit_theater' theater.id %}" class="edit-btn5">
+                        Edit
+                    </a>
+
+                    <a href="{% url 'delete_theater' theater.id %}"
+                       class="delete-btn5"
+                       onclick="return confirm('Delete this theater?')">
+
+                        Delete
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+                <td colspan="5" class="empty-table5">
+                    No theaters available.
+                </td>
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+{% endblock %}

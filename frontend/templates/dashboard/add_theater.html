@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+
+{% block title %}
+Add Theater
+{% endblock %}
+
+{% block content %}
+
+<div class="theater-form-page">
+
+    <div class="theater-form-card">
+
+        <div class="theater-form-header">
+            <h1>🎭 Add New Theater</h1>
+            <p>Create a new theater for your movie booking system.</p>
+        </div>
+
+        {% if error %}
+        <div class="form-error">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="form-group6">
+                <label>Theater Name</label>
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Enter theater name"
+                    required
+                >
+            </div>
+
+            <div class="form-group6">
+                <label>City</label>
+                <input
+                    type="text"
+                    name="city"
+                    placeholder="Enter city"
+                    required
+                >
+            </div>
+
+            <div class="form-group6">
+                <label>Address</label>
+                <textarea
+                    name="address"
+                    rows="3"
+                    placeholder="Enter full address"
+                    required
+                ></textarea>
+            </div>
+
+            <div class="form-group6">
+                <label>Total Seats</label>
+                <input
+                    type="number"
+                    name="total_seats"
+                    placeholder="Enter total seats"
+                    required
+                >
+            </div>
+
+            <div class="form-group6">
+                <label>Movie</label>
+
+                <select name="movie_id" required>
+
+                    {% for movie in movies %}
+
+                    <option value="{{ movie.id }}">
+                        {{ movie.title }}
+                    </option>
+
+                    {% endfor %}
+
+                </select>
+
+            </div>
+
+            <button class="theater-submit-btn">
+                ➕ Add Theater
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}

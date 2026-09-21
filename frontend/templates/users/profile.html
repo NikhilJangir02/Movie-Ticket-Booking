@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}
+Profile
+{% endblock  %}
+
+{% block body_class %}
+no-scroll
+{% endblock %}
+
+{% block content %}
+
+<div class="profile-page">
+
+    <div class="profile-card">
+
+        <div class="profile-header">
+            <h1>My Profile</h1>
+            <p>Manage your account information.</p>
+        </div>
+
+        <div class="profile-details">
+
+            <div class="detail-row">
+                <span>Full Name</span>
+                <strong>{{ user.name }}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Email</span>
+                <strong>{{ user.email }}</strong>
+            </div>
+
+            <div class="detail-row">
+                <span>Role</span>
+                <strong>{{ user.role|title }}</strong>
+            </div>
+        </div>
+
+        <div class="profile-action">
+
+            <a href="{% url 'edit_profile' %}" class="btn-edit">
+                Edit Profile
+            </a>
+
+            <a href="{% url 'change_password' %}" class="btn-password">
+                Change Password
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock  %}

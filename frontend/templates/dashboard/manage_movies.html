@@ -1,0 +1,90 @@
+{% extends "base.html" %}
+
+{% block title %}
+Manage Movie
+{% endblock  %}
+
+{% block content %}
+
+<div class="manage-movies">
+
+    <div class="page-header">
+
+        <div>
+            <h1>🎬 Manage Movies</h1>
+        </div>
+
+    </div>
+
+    <div class="table-card">
+
+        <table class="movie-table">
+
+            <thead>
+
+                <tr>
+
+                    <th>Poster</th>
+                    <th>Title</th>
+                    <th>Genre</th>
+                    <th>Language</th>
+                    <th>Rating</th>
+                    <th>Actions</th>
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for movie in movies %}
+                
+                <tr>
+
+                    <td>
+
+                        <img src="{{ movie.poster_url }}" class="table-poster">
+
+                    </td>
+
+                    <td>{{ movie.title }}</td>
+                    <td>{{ movie.genre }}</td>
+                    <td>{{ movie.language }}</td>
+                    <td>{{ movie.rating }}</td>
+
+                    <td>
+
+                        <a href="{% url 'edit_movie'  movie.id %}" class="edit-btn">
+                            Edit
+                        </a>
+
+                        <a href="{% url 'delete_movie' movie.id %}" class="delete-btn" onclick="return confirm('Delete this movie?')">
+                            Delete
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="6">
+
+                        No movies found.
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock  %}

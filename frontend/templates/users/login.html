@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}
+Login
+{% endblock  %}
+
+{% block body_class %}
+no-scroll
+{% endblock %}
+
+{% block content %}
+
+<div class="login-page">
+
+    <div class="login-card">
+
+        <div class="login-header">
+
+        <h1>Welcome</h1>
+
+        <p>Login to continue booking your favourite movies.</p>
+
+        </div>
+
+
+        <form method="post">
+            
+            {% csrf_token %}
+
+            <div class="input-box">
+                <label>Email</label>
+                <input type="email" name="email" placeholder="Enter your email" required>
+
+            </div>
+
+            <div class="input-box">
+
+                <label>Password</label>
+                <input type="password" name="password" placeholder="Enter password" required>
+
+            </div>
+            <button class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock  %}

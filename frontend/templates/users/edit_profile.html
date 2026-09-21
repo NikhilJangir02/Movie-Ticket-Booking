@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block title %}
+Edit Profile
+{% endblock  %}
+
+{% block body_class %}
+no-scroll
+{% endblock %}
+
+{% block content %}
+
+<div class="form-page">
+
+    <div class="form-card">
+
+        <div class="form-header">
+            <h2>Edit Profile</h2>
+            <p>Update your account information</p>
+        </div>
+
+        {% if error %}
+
+        <div class="error-box">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post">
+
+            {% csrf_token %}
+
+            <div class="input-box1">
+
+                <label>Name</label>
+                <input type="text" name="name" value="{{ user.name }}" required>
+            </div>
+
+            <div class="input-box1">
+                <label>Email</label>
+                <input type="email" name="email" value="{{ user.email }}" required>
+            </div>
+
+            <button class="save-btn">
+                Save Change
+            </button>
+
+            <a href="{% url 'profile' %}" class="cancel-btn">
+                Cancel
+            </a>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock  %}

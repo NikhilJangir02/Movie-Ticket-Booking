@@ -1,0 +1,106 @@
+{% extends "base.html" %}
+
+{% block title %}
+<h1>Add Show</h1>
+{% endblock  %}
+
+{% block body_class %}
+no-scroll
+{% endblock %}
+
+{% block content %}
+
+<div class="show-page">
+
+    <div class="show-card">
+
+        <div class="show-header">
+            <h1>🎬 Schedule New Show</h1>
+        </div>
+
+        
+        {% if error %}
+        <div class="form-error1">
+            {{ error }}
+        </div>
+        {% endif %}
+
+        <form method="post" class="show-form">
+
+            {% csrf_token %}
+
+            <div class="show-grid">
+
+                <div class="input-group1">
+                    <label>Movie</label>
+                    <select name="movie_id" required>
+
+                        {% for movie in movies %}
+                        
+                        <option value="{{ movie.id }}">
+                            {{ movie.title }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+                <div class="input-group1">
+                    <label>Theater</label>
+
+                    <select name="theater_id" required>
+
+                        {% for theater in theaters %}
+                        
+                        <option value="{{ theater.id }}">
+                            {{ theater.name }}
+                        </option>
+
+                        {% endfor %}
+
+                    </select>
+
+                </div>
+
+            </div>
+
+            <div class="show-grid">
+
+                <div class="input-group1">
+
+                    <label>Show Date</label>
+                    <input type="date" name="show_date" required>
+
+                </div>
+
+                <div class="input-group1">
+
+                    <label>Show Time</label>
+                    <input type="time" name="show_time" required>
+
+                </div>
+
+            </div>
+
+            <div class="input-group1">
+
+                <label>Ticket Price</label>
+                <input type="number" name="price" step="0.01" placeholder="250" required>
+
+            </div>
+
+            <button class="show-btn">
+
+                ➕ Schedule Show
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock  %}

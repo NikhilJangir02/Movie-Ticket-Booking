@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+
+{% block title %}
+My Bookings
+{% endblock %}
+
+{% block content %}
+
+<div class="booking-history-wrapper">
+
+    <div class="booking-history-header">
+
+        <h1>🎟 My Bookings</h1>
+    </div>
+
+    {% if bookings %}
+
+    <div class="booking-history-table">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>🎬 Movie</th>
+                    <th>🏢 Theater</th>
+                    <th>👤 Customer</th>
+                    <th>📧 Email</th>
+                    <th>💺 Seats</th>
+                    <th>⚙ Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+    {% if bookings %}
+
+        {% for booking in bookings %}
+
+        <tr>
+
+            <td>{{ booking.movie_name }}</td>
+
+            <td>{{ booking.theater_name }}</td>
+
+            <td>{{ booking.customer_name }}</td>
+
+            <td>{{ booking.email }}</td>
+
+            <td>{{ booking.seats }}</td>
+
+            <td>
+
+                <a href="{% url 'cancel_booking' booking.id %}"
+                   class="cancel-btn1"
+                   onclick="return confirm('Cancel this booking?')">
+
+                    Cancel
+
+                </a>
+
+            </td>
+
+        </tr>
+
+        {% endfor %}
+
+    {% else %}
+
+        <tr class="booking-empty-row">
+
+            <td colspan="6">
+
+                <div class="booking-empty-box">
+
+                    <div class="booking-empty-icon">🎟️</div>
+
+                    <h3>No Bookings Yet</h3>
+
+                    <p>You haven't booked any movies yet.</p>
+
+                </div>
+
+            </td>
+
+        </tr>
+
+    {% endif %}
+
+</tbody>
+
+        </table>
+
+    </div>
+
+    {% else %}
+
+    <div class="booking-empty-state">
+
+        <div class="empty-icon">
+
+            🎬
+
+        </div>
+
+        <h2>No Bookings Yet</h2>
+
+        <p>
+
+            Looks like you haven't booked any movies yet.
+
+        </p>
+
+    </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

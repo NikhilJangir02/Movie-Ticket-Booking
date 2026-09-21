@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block title %}
+Admin Dashboard
+{% endblock %}
+
+{% block content %}
+
+<div class="dashboard-wrapper">
+
+    <div class="dashboard-header">
+        <h1>🎬 Admin Dashboard</h1>
+    </div>
+
+    <div class="dashboard-grid">
+
+        <a href="{% url 'add_movie' %}" class="dashboard-card1">
+            <div class="dashboard-icon">➕🎬</div>
+            <h3>Add Movie</h3>
+            <p>Add a new movie to the system.</p>
+        </a>
+
+        <a href="{% url 'manage_movies' %}" class="dashboard-card1">
+            <div class="dashboard-icon">🎥</div>
+            <h3>Manage Movies</h3>
+            <p>Edit or delete existing movies.</p>
+        </a>
+
+        <a href="{% url 'manage_theaters' %}" class="dashboard-card1">
+            <div class="dashboard-icon">🏢</div>
+            <h3>Manage Theaters</h3>
+            <p>Add and update theaters.</p>
+        </a>
+
+        <a href="{% url 'manage_shows' %}" class="dashboard-card1">
+            <div class="dashboard-icon">🎞️</div>
+            <h3>Manage Shows</h3>
+            <p>Create and manage movie shows.</p>
+        </a>
+
+        <a href="{% url 'my_booking' %}" class="dashboard-card1">
+            <div class="dashboard-icon">🎟️</div>
+            <h3>View Bookings</h3>
+            <p>See all user bookings.</p>
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}
+Book Show
+{% endblock  %}
+
+{% block content %}
+
+<h1>Book Tickets</h1>
+
+{% if error %}
+<p style="color=red;">
+    {{ error }}
+</p>
+{% endif %}
+
+<table class="booking-table">
+
+    <tr>
+        
+        <th>Movie</th>
+        <td>{{ show.movie_title }}</td>
+    </tr>
+
+    <tr>
+
+        <th>Theater</th>
+        <td>{{ show.theater_name }}</td>
+    </tr>
+
+    <tr>
+
+        <th>Date</th>
+        <td>{{ show.show_date }}</td>
+    </tr>
+
+    <tr>
+
+        <th>Time</th>
+        <td>{{ show.show_time }}</td>
+    </tr>
+
+    <tr>
+
+        <th>Price</th>
+        <td>{{ show.price }}</td>
+    </tr>
+
+</table>
+
+<br>
+
+<form method="post">
+
+    {% csrf_token %}
+
+    <label>Number of Seats</label>
+
+    <input type="number" name="seats" min="1" max="10" required>
+
+    <br><br>
+
+    <button class="btn" type="submit">
+        Confirm Booking
+    </button>
+    
+</form>
+
+{% endblock  %}

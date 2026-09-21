@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ movie.title }}
+{% endblock  %}
+
+{% block content %}
+
+<h1>{{ movie.title }}</h1>
+
+<img src="{{ movie.poster_url }}" width="250">
+
+<p>
+    {{ movie.description }}
+</p>
+
+<hr>
+
+<h2>Available Shows</h2>
+
+<table class="booking-table">
+
+    <tr>
+
+        <th>Theater</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Price</th>
+        <th></th>
+
+    </tr>
+
+    {% for show in Shows %}
+    
+    <tr>
+
+        <td>{{ show.theater_name }}</td>
+        <td>{{ show.show_date }}</td>
+        <td>{{ show.show_time }}</td>
+        <td>{{ show.price }}</td>
+        <td>
+            <a href="{% url 'book_show' show.id %}" class="btn">
+                Book Now
+            </a>
+
+        </td>
+
+    </tr>
+
+    {% empty %}
+
+    <tr>
+
+        <td colspan="5">
+            No shows available.
+        </td>
+
+    </tr>
+
+    {% endfor %}
+    
+</table>
+
+{% endblock  %}

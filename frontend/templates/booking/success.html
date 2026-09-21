@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block title %}
+Booking Success
+{% endblock  %}
+
+{% block content %}
+
+<div class="success-container">
+
+    <h1>Booking Successful!</h1>
+
+    <p>Your ticket has been booked successfully.</p>
+
+    <p>
+        <strong>Booking ID:</strong>
+        {{ booking.booking_id }}
+    </p>
+
+    <a href="/movies/" class="btn">
+        Back to Movies
+    </a>
+</div>
+
+{% endblock  %}
